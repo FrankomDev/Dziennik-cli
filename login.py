@@ -20,7 +20,7 @@ class Login:
         query = requests.post(url=query_url, headers=form_headers, data=data_query)
 
         data_login = {
-            'Alias': login,
+            'UserName': login, # before it was named Alias but they changed it? idk why
             'Password': password,
             'captcha-response': "",
             '__RequestVerificationToken': token

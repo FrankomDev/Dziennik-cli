@@ -15,8 +15,9 @@ class Commands:
             okres = okresyklasyfikacyjne[len(okresyklasyfikacyjne)-1]['id']
             if okresklasyfikacyjny:
                 for i in okresyklasyfikacyjne:
-                    if i['numerOkresu'] == okresklasyfikacyjny:
+                    if int(i['numerOkresu']) == int(okresklasyfikacyjny):
                         okres = i['id']
+                        break
     
             oceny_url = f"{self.context.base_url}/api/Oceny?key={self.context.all['key']}&idOkresKlasyfikacyjny={okres}"
             oceny = requests.get(url=oceny_url, cookies=self.context.cookies, headers=self.context.headers).json()['ocenyPrzedmioty']

@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import sys
 
 class Login:
     def __init__(self, login : str, password : str) -> None:

@@ -1,3 +1,6 @@
+import sys
+import os
+
 def format_hour(data) -> str:
     data = str(data).split("T")[1].split(":")[0:2]
     return f"{data[0]}:{data[1]}"
@@ -26,3 +29,15 @@ sprawdziany_str = {
     3: "Praca klasowa",
     4: "Zadanie domowe"
 }
+
+dir : str
+if sys.platform == "linux":
+    dir = os.path.join(os.getenv('HOME'), ".config", "dziennik-cli")
+else:
+    print("Inne systemy niż Linux narazie nie wspierane!")
+    sys.exit()
+
+if not os.path.exists(dir):
+    os.mkdir(dir)
+config_location = os.path.join(dir, "config.json")
+cache_location = os.path.join(dir, "cache.json")
